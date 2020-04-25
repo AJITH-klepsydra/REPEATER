@@ -7,7 +7,6 @@ import time
 from pynput import keyboard
 from pynput import mouse
 from pynput.keyboard import Key, Listener
-from fbs_runtime.application_context.PyQt5 import ApplicationContext
 pyautogui.FAILSAFE = False
 def on_functionf8(key):                                                                  #function that handles keystrokes
     handle = open("log.klep" , 'a')
@@ -141,7 +140,7 @@ class start(QtWidgets.QMainWindow):
                     scroll = line.strip().split()
                     pyautogui.click(int(click[-2]),int(click[-1]))
                     print(int(scroll[-2]), int(scroll[-1]))
-                    time.sleep(0.5)
+                    time.sleep(0.05)
             k1 = k1+1
             print("k1",k1)
             handle = open("log.klep","r")
@@ -230,10 +229,9 @@ class ctr:
         self.window.hide()
         self.win2.setWindowTitle("ARD MAPPER")
 def ma():
-    appctxt = ApplicationContext()
+    app = QtWidgets.QApplication(sys.argv)
     ctrl = ctr()
     ctrl.show_main()
-    sys.exit(appctxt.app.exec_() )
+    sys.exit(app.exec_() )
 if(__name__ == '__main__'):
     ma()
-
